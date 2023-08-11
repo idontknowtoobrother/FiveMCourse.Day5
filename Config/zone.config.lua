@@ -7,6 +7,7 @@ Config.areas = {
         z = 29.3438,
         radius = 10.0,
         model = `prop_weed_01`,
+        animationName = 'rotationAndUpDown',
         name = "Gucci",
     },
     {

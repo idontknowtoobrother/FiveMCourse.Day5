@@ -33,6 +33,16 @@ Functions.willOpenArea = function(area)
 end
 
 
+Functions.requestParticle = function(dict, name)
+
+    
+    RequestNamedPtfxAsset(dict)
+    while not HasNamedPtfxAssetLoaded(dict) do
+        Citizen.Wait(0)
+    end
+    
+
+end
 
 Functions.playAnimationObject = function(object)
 
@@ -41,10 +51,15 @@ Functions.playAnimationObject = function(object)
     local lastHeight = objectLoc.z
     local height = objectLoc.z
 
+    local dict = "scr_indep_fireworks"
+    local particleName = "scr_indep_firework_shotburst"
+
+    Functions.requestParticle(dict, particleName)
+
     CreateThread(function()
         while rotation > 0 do
             Wait(0)
-            rotation = rotation - 3.0
+            rotation = rotation - 8.0
             height = height - 0.006
             SetEntityHeading(object, rotation)
             SetEntityCoords(object, objectLoc.x, objectLoc.y, height)
@@ -52,10 +67,12 @@ Functions.playAnimationObject = function(object)
     
         while height < lastHeight do
             Wait(0)
-            rotation = rotation + 4.5
+            rotation = rotation + 8.0
             height = height + 0.006
             SetEntityHeading(object, rotation)
             SetEntityCoords(object, objectLoc.x, objectLoc.y, height)
+            UseParticleFxAssetNextCall(dict)
+            StartParticleFxNonLoopedAtCoord(particleName, objectLoc.x, objectLoc.y, objectLoc.z, 0.0, 0.0, 0.0, 0.1, false, false, false)
         end
     end)
 
