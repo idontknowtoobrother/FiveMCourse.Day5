@@ -15,7 +15,7 @@ Modules.loadModel = function(model)
 
 end
 
-Modules.createObject = function(model, coords, isNetwork, freeze, placeOnGround, invicivble)
+Modules.createObject = function(model, coords, isNetwork, freeze, placeOnGround, invincible)
 
     Modules.loadModel(model)
 
@@ -29,7 +29,7 @@ Modules.createObject = function(model, coords, isNetwork, freeze, placeOnGround,
         FreezeEntityPosition(object, true)
     end
 
-    if invicivble then
+    if invincible then
         SetEntityInvincible(object, true)
     end
 

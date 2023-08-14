@@ -64,7 +64,6 @@ Functions.playAnimationObject = function(object)
             SetEntityHeading(object, rotation)
             SetEntityCoords(object, objectLoc.x, objectLoc.y, height)
         end
-    
         while height < lastHeight do
             Wait(0)
             rotation = rotation + 8.0
@@ -75,5 +74,5 @@ Functions.playAnimationObject = function(object)
             StartParticleFxNonLoopedAtCoord(particleName, objectLoc.x, objectLoc.y, objectLoc.z, 0.0, 0.0, 0.0, 0.1, false, false, false)
         end
     end)
-
+    
 end
